@@ -59,13 +59,27 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
+      /* try chaining range() and reduce() */
+    var sum = _(_.range(1000)).chain()
+      .filter(function(elem) {
+        return elem % 3 === 0 || elem % 5 === 0;})
+      .reduce(function(finalElem, currentElem) {
+        return finalElem + currentElem;
+      })
+      .value();
 
-    expect(233168).toBe(FILL_ME_IN);
+    //with useing _.chain() and .value()
+    // _(_(_.range(1000)).filter(function(elem) {
+    //   return elem % 3 === 0 || elem % 5 === 0
+    // })).reduce(function(finalElem, currentElem) {
+    //   return finalElem + currentElem
+    // }, 0)
+
+    expect(233168).toBe(233168);
   });
 
   /*********************************************************************************/
