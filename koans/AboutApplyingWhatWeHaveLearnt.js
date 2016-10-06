@@ -99,22 +99,20 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
-    console.log(
-
-
     _(products).chain()
     .map(function(pizza) {
       return pizza.ingredients
     })
     .flatten()
     .reduce(function(ingreCount, currentIngre) {
-      return ingreCount[currentIngre] = (ingreCount[currentIngre] || 0) + 1
+      //assign ingreCount (object) with (key) of currentIngre = the (value) of ingreCount with property of currentIngre
+      //which is the number +1 or if ingreCount[currentIngre] value don't exist then 0 + 1
+      ingreCount[currentIngre] = (ingreCount[currentIngre] || 0) + 1
+        return ingreCount
     }, ingredientCount)
     .value()
 
-      )
-console.log(ingredientCount)
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
